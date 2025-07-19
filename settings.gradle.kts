@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "death-countdown-live-wallpaper"
+rootProject.name = "DeathCountdownWallpaper"
 include(":app")
