@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">death-countdown-live-wallpaper</string>
+    <string name="app_name">Death Countdown Wallpaper</string>
+    <string name="wallpaper_name">Death Countdown</string>
+    <string name="wallpaper_description">Countdown for your Death</string>
+    <string name="wallpaper_author">Enmanuel Rodriguez</string>
 </resources>

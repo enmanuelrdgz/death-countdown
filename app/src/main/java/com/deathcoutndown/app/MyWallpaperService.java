@@ -15,25 +15,57 @@ public class MyWallpaperService extends WallpaperService {
     private class MyWallpaperEngine extends Engine {
         private final Handler handler = new Handler();
         private final Runnable drawRunner = this::draw;
+        private boolean visible = false;
 
         private void draw() {
             SurfaceHolder holder = getSurfaceHolder();
-            Canvas canvas = holder.lockCanvas();
-            if (canvas != null) {
-                canvas.drawColor(Color.BLACK); // ejemplo
-                holder.unlockCanvasAndPost(canvas);
+            Canvas canvas = null;
+            try {
+                canvas = holder.lockCanvas();
+                if (canvas != null) {
+                    // Perform your drawing here
+                    canvas.drawColor(Color.BLACK);
+                }
+            } finally {
+                if (canvas != null) {
+                    holder.unlockCanvasAndPost(canvas);
+                }
             }
-            handler.postDelayed(drawRunner, 1000 / 30);
+
+            // Schedule next frame if still visible
+            if (visible) {
+                handler.removeCallbacks(drawRunner);
+                handler.postDelayed(drawRunner, 1000 / 30); // 30 FPS
+            }
         }
 
         @Override
         public void onVisibilityChanged(boolean visible) {
-            if (visible) handler.post(drawRunner);
-            else handler.removeCallbacks(drawRunner);
+            this.visible = visible;
+            if (visible) {
+                handler.post(drawRunner);
+            } else {
+                handler.removeCallbacks(drawRunner);
+            }
+        }
+
+        @Override
+        public void onSurfaceCreated(SurfaceHolder holder) {
+            super.onSurfaceCreated(holder);
+            if (visible) {
+                handler.post(drawRunner);
+            }
+        }
+
+        @Override
+        public void onSurfaceDestroyed(SurfaceHolder holder) {
+            super.onSurfaceDestroyed(holder);
+            handler.removeCallbacks(drawRunner);
         }
 
         @Override
         public void onDestroy() {
+            super.onDestroy();
             handler.removeCallbacks(drawRunner);
         }
     }
