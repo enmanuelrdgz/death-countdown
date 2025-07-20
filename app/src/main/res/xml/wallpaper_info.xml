@@ -5,5 +5,5 @@
     android:description="@string/wallpaper_description"
     android:thumbnail="@drawable/wallpaper_thumbnail"
     android:author="@string/wallpaper_author"
-    />
+    android:settingsActivity="com.deathcoutndown.app.SettingsActivity"/>
     <!--    android:settingsActivity="com.example.livewallpaper.SettingsActivity"-->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estilo para el NumberPicker -->
+    <style name="NumberPickerStyle">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#B0BEC5</item>
+        <item name="android:colorControlNormal">#FF9800</item>
+        <item name="android:colorAccent">#FF9800</item>
+    </style>
+
+    <!-- Tema base de la aplicación (si no existe) -->
+    <style name="Theme.Deathcountdownlivewallpaper" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="android:colorPrimary">#FF6B6B</item>
+        <item name="android:colorAccent">#4CAF50</item>
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:navigationBarColor">#121212</item>
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+    </style>
+
+</resources>
